@@ -43,4 +43,51 @@ print("datatpe of a after convertion is ",a.dtype)
 print("item sixe afte convertion ",a.itemsize)
 print("total size occupied after converuton ",a.size*a.itemsize)
 
+#Slicing and Indexing 
+a=[1,2,3,4]
+print(a[:-1])
+
+ab=np.array([[1,2,3],[4,5,6],[7,8,9]])
+print("1 st row in ab is ",ab[0,:])
+print("1st column in ab is ",ab[:,0])
+print(ab[:2,:2])
+print(ab[::2,:])
+print(ab[:,::2])
+print(ab[:,:-1])
+print(ab[:,-1])
+
+data=np.array([[1,2,3,4,5],[6,7,8,9,10],[11,12,13,14,15],[16,17,18,19,20],[21,22,23,24,25]])
+print(data[1,2])
+print(data[2,:])
+print(data[:,1])
+print(data[:2,3:])
+print(data[2:, :3])
+print("x IS",data[:,:-1])
+print("Y is ",data[:,-1])
+print("last row first",data[::-1])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

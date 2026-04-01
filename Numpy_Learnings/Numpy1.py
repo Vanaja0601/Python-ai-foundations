@@ -66,6 +66,65 @@ print("x IS",data[:,:-1])
 print("Y is ",data[:,-1])
 print("last row first",data[::-1])
 
+#Numpy Methods and Operations
+#we can add ,multiply ...all the arithmatic operations can be performed directly without using loops unlike lists
+#Can perform scalar operastions which means if we add a single element it gets added to all the elements of the array ...so as the other operations
+num1=np.array([1,2,3])
+sq_num=num1*2
+print("squares od num1 is ",sq_num)
+num2=np.array([4,5,6])
+sum=num1+num2
+print(sum)
+print("testing scalar operation", num1+3)
+
+#Methods -Squareroot,power,cuberoot,absolute
+a=np.array([1,2,3,4])
+sa_root=np.sqrt(a)
+print(sa_root)
+sq=np.square(a)
+print(sq)
+cb=np.cbrt(a)
+print(cb)
+ab=[-2,-1,3,5]
+ab=np.abs(ab)
+print(ab)
+
+##Exponential and Logarithm
+a=np.array([1,2,3,4])
+aexp=np.exp(a)
+print("aexp is",aexp)
+alog=np.log(a)
+print("alog is ", alog)
+alog10=np.log10(a)
+print("alog10 is ",alog10)
+alog2=np.log2(a)
+print("alog 2i s",alog2)
+
+##Comaprision operators -can oerform <,>,<=,>=,==,!= operationsd on all the elements of the array at once 
+a=np.array([10,20,30,40,50,60])
+print(a>30)
+##to filter the above tru conditons we can use mask style
+mask=a>30
+print(a[mask])
+##or condition directly in the index--one linear
+print(a[a%30==0])
+
+A=np.array([[1,2],[4,3]])
+B=np.array([[2,3],[3,4]])
+print("A@B is ", A@B)
+print(np.dot(A,B))
+print("transpose of A",A.T)
+
+Angles_n=np.array([0,20,30,40])
+radians_n=np.raidans(Angles_n)
+sin_n=np.sin(radians_n)
+print("sin_n is ",sin_n)
+
+
+
+
+
+
 
 
 

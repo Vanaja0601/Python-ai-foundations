@@ -7,6 +7,7 @@ print(data)
 #data stored in 3d-for example to store images in ml--lets say it as list of tables
 ThreeD=np.array([[[1,2],[3,4]],[[5,6],[6,7]]])
 print(ThreeD)
+####Methods Of NUmpy
 print(ThreeD.shape)
 all_Zeroes=np.zeros((3,3))
 print(all_Zeroes)
@@ -43,7 +44,7 @@ print("datatpe of a after convertion is ",a.dtype)
 print("item sixe afte convertion ",a.itemsize)
 print("total size occupied after converuton ",a.size*a.itemsize)
 
-#Slicing and Indexing 
+###Slicing and Indexing 
 a=[1,2,3,4]
 print(a[:-1])
 
@@ -66,7 +67,7 @@ print("x IS",data[:,:-1])
 print("Y is ",data[:,-1])
 print("last row first",data[::-1])
 
-#Numpy Methods and Operations
+###Numpy Methods and Operations
 #we can add ,multiply ...all the arithmatic operations can be performed directly without using loops unlike lists
 #Can perform scalar operastions which means if we add a single element it gets added to all the elements of the array ...so as the other operations
 num1=np.array([1,2,3])
@@ -85,6 +86,8 @@ sq=np.square(a)
 print(sq)
 cb=np.cbrt(a)
 print(cb)
+pw=np.power(a,4)
+print("power is ",pw)
 ab=[-2,-1,3,5]
 ab=np.abs(ab)
 print(ab)
@@ -116,17 +119,85 @@ print(np.dot(A,B))
 print("transpose of A",A.T)
 
 Angles_n=np.array([0,20,30,40])
-radians_n=np.raidans(Angles_n)
+radians_n=np.radians(Angles_n)
 sin_n=np.sin(radians_n)
 print("sin_n is ",sin_n)
 
+###Reshaping array-you can reshape an array in a way that total elements are same
+# for example-3*4 matrix shape can be changes to 2*6,1*12 or 4*3...
+sample=np.array([[2,3,4],[3,5,6]])
+print("reshaped array is ",sample.reshape(3,2))
+flat=sample.flatten()
+print("flattened is ",flat)
+#when we are not sure about the no of columns,or rows  -we can use -1 instead so it automaticALLy calculates and reshapes
+aut=sample.reshape(3,-1)
+print("automatically reshaped array is ",aut)
+autc=sample.reshape(-1,3)
+print(autc)
+##Concatenation
+#In 1D we can join them end to end 
+a1=np.array([1,2,3])
+b1=np.array([4,5,6])
+print("1D concatenation  is " ,np.concatenate((a1,b1)))
+#In 2d vertical(down rows,axis=0) and horizontal(across columns,axis=1) ways of concatenation based on axis
+a2=np.array([[1,2],[3,4]])
+b2=np.array([[5,6],[7,8]])
+a3=np.array([[1,2],[3,4],[5,6]])
+print("vertical conc is ",np.vstack((a2,b2)))
+print("horizontal conc is ",np.hstack((a2,b2)))
 
+###Axis on 2D,3D
+#In 2d just like above np.concatenate((a,b),axis=0)implies down the rows example
+print("sum happens down the rows ",np.sum((a3),axis=0))##row wise added
+print("sum happens down the rows ",np.sum((a3),axis=1))##added across columns
+print("sum happens 2 matrix ",np.sum((a2,b2),axis=0))
+print("sum happens 2 matrices ",np.sum((a2,b2),axis=1))
 
+#3D--(2,3,4)--which means 2 pages with 3 rows and contans 4 elemnts in each row
+#if axis=0 --adding corresponding elements of different pages -here 2,2,3-shape
+sa=np.array([[[1,2,3],[4,5,6]],[[7,8,9],[10,11,12]]])
+print("If axis=0 in 3D sum ,corresponding elements in different pages gets added ",np.sum(sa,axis=0))
+print("if axix=1 in 3d then down the rows in same page  ",np.sum(sa,axis=1))
+print("if axis=2 in 3d then it goes across the columns ",np.sum(sa,axis=2))
 
+#Statistics
+a=np.array([1,2,3])
+print("mean is ",np.mean(a))
+print("median is ",np.median(a))
+print("standard devaition is ",np.std(a))
+print("min is ",np.min(a))
+print("max is ",np.max(a))
+print("variance  is ",np.var(a))
 
+##Image processing example
+image=np.random.randint(0,256, size=(10,10))
+print("Orginal image is ",image)
 
+#Image operations
+print(f'brightness (mean) is :{np.mean(image)}')
+print(f'contras is (std):{np.std(image)}')
+print(f'min pixel value is :{np.min(image)}')
+print(f'max pixel value is :{np.max(image)}')
 
+#Brightness adjustment(add constant)
+brighter=np.clip(image+50,0,255) #i am clipping to valid range 255 along increaing by 50
+print(f'brightness increased now mean is :{np.mean(brighter)}')
+#Contrast adjustment (multiply)
+contrast=np.clip(image*1.5,0,255) #i am clipping to valid range 255 along increaing by 50
+print(f'contrast increased now std is :{np.std(contrast)}')
 
+####Randomness
+#print(np.random.rand(3))
+np.random.seed(42)
+print(np.random.rand(4))
+print(np.random.rand(4))
+
+ab=np.array([1,4,6,2,1,3])
+print(np.random.choice(a))
+print(np.random.choice(a,size=3))
+print(np.random.choice(a,size=3,replace=False))
+np.random.shuffle(ab)
+print(ab)
 
 
 
